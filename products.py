@@ -1,3 +1,13 @@
+"""
+Defines custom exceptions and the Product class for managing product inventory and actions.
+
+This module includes custom exception classes for handling specific error conditions and the
+Product class, which represents an item in inventory with attributes like name, price, quantity,
+and active status. The Product class provides methods to activate/deactivate a product, manage
+quantities, and calculate the cost of purchases.
+"""
+
+
 class EmptyParamError(Exception):
     """
     Exception raised when a required parameter is missing.
@@ -32,15 +42,6 @@ class Product:
 
     The Product class is responsible for managing inventory and allowing interactions such as
     activating, deactivating, purchasing products, and displaying their details.
-
-    :ivar _name: The name of the product.
-    :type _name: str
-    :ivar _price: The price of the product.
-    :type _price: float
-    :ivar _quantity: The current stock quantity of the product.
-    :type _quantity: int
-    :ivar _active: Indicates if the product is active or not.
-    :type _active: bool
     """
 
     def __init__(self, name: str, price: float, quantity: int):
@@ -71,7 +72,7 @@ class Product:
         :param price: The price value of the item being validated. Must be a non-negative float or int
         :param quantity: The quantity value of the item being validated. Must be a non-negative integer
         :raises EmptyParamError: If any of the arguments is None or empty
-        :raises TypeParamError: If the type of an argument does not match the expected type
+        :raises TypeParamError: If the type of argument does not match the expected type
         :raises NegativeParamError: If price or quantity is less than zero
         """
         if not name or not price or not quantity:
