@@ -1,4 +1,25 @@
 from products import Product
+from menu import MenuObject
+
+
+class StoreMenu:
+    header = 'Store Menu'
+    seperator = '----------'
+    menu_items = [
+        'List all products in store',
+        'show total amount in store',
+        'Make an order',
+        'Quit'
+    ]
+    footer = None
+    store_menu = MenuObject(menu_items, header, seperator, footer)
+
+class StoreInventory:
+    product_list = [Product("MacBook Air M2", price=1450, quantity=100),
+                    Product("Bose QuietComfort Earbuds", price=250, quantity=500),
+                    Product("Google Pixel 7", price=500, quantity=250)
+                    ]
+
 
 class Store:
     """
@@ -54,6 +75,10 @@ class Store:
         :rtype: list[Product]
         """
         return [item for item in self._stock if item.is_active()]
+
+    def show_all(self):
+        for item in self.get_all_products():
+            item.show()
 
     def order(self, shopping_list: list[tuple[Product, int]]) -> float:
         """
