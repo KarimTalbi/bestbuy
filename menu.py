@@ -60,15 +60,21 @@ class Menu:
     @property
     def show_menu(self):
         output = "\n"
+
         if self.header:
             output += f"{self.header}\n"
+
         if self._top_sep:
             output += f"{self.seperator}\n"
-        output += self._create_options
+
+        output += f"{self._create_options}\n"
+
         if self._bot_sep:
             output += f"{self.seperator}\n"
+
         if self.footer:
-            output += f"{self.footer}\n"
+            output += f"{self.footer}"
+
         return output
 
     def __str__(self):
